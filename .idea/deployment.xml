@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="ftp.cumulo.cl" uploadOnCheckin="e89c432c-adba-4678-bcd7-26e51edd9e4f">
+    <serverData>
+      <paths name="ftp.cumulo.cl">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="www.cumulo.cl" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/cgi-bin" />
+            <excludedPath path="/.ftpquota" />
+            <excludedPath path="/logo-default.png" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myUploadOnCheckinName" value="ftp.cumulo.cl" />
+  </component>
+</project>
