@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - cumulo_demo@localhost" uuid="3fce6acd-2b51-4764-a965-23af4f40ad51">
+    <database-info product="MySQL" version="5.6.24-0ubuntu2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="cumulo_demo"/>
+    <table name="CREAN" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_GRUPO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_GRUPO,ID_PROYECTO"/>
+      <foreign-key name="FK_CREAN" columns="ID_GRUPO" ref-table="GRUPO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_GRUPO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_CREAN2" columns="ID_PROYECTO" ref-table="PROYECTO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_PROYECTO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_CREAN2" unique="false" columns="ID_PROYECTO"/>
+    </table>
+    <table name="EMPRESA" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="RUT_EMPRESA" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NOMBRE_EMPRESA" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FECHA_INICIO_ACTIVIDADES" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="FECHA_INGRESO_SISTEMA_EMPRESA" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="COMUNA_EMPRESA" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CIUDAD_EMPRESA" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DIRECCION_EMPRESA" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="PAIS_EMPRESA" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CLASIFICACION_EMPRESA" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="RUT_EMPRESA"/>
+      <foreign-key name="FK_ES_RESPONSABLE" columns="RUT_USUARIO" ref-table="USUARIO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_USUARIO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_ESTA_COMPUESTA" table="ESTA_COMPUESTA" schema="" catalog="cumulo_demo" columns="RUT_EMPRESA"/>
+      <exported-key name="FK_COMPONE" table="GRUPO" schema="" catalog="cumulo_demo" columns="RUT_EMPRESA"/>
+      <exported-key name="FK_SE_ENCUENTRA_EMPRESA" table="SE_ENCUENTRA_EMPRESA" schema="" catalog="cumulo_demo" columns="RUT_EMPRESA"/>
+      <index name="FK_ES_RESPONSABLE" unique="false" columns="RUT_USUARIO"/>
+    </table>
+    <table name="ESTADO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_ESTADO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NOMBRE_VALIDADOR" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="DOCUMANTACION_ENTREGADA" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="APROBADO" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="FECHA_APROBADO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="APROVACION_VIGENTE" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <primary-key name="PRIMARY" columns="ID_ESTADO"/>
+      <exported-key name="FK_SE_ENCUENTRA_EMPRESA2" table="SE_ENCUENTRA_EMPRESA" schema="" catalog="cumulo_demo" columns="ID_ESTADO"/>
+      <exported-key name="FK_SE_ENCUENTRA_GRUPO" table="SE_ENCUENTRA_GRUPO" schema="" catalog="cumulo_demo" columns="ID_ESTADO"/>
+      <exported-key name="FK_SE_ENCUENTRA_OFERTA" table="SE_ENCUENTRA_OFERTA" schema="" catalog="cumulo_demo" columns="ID_ESTADO"/>
+      <exported-key name="FK_SE_ENCUENTRA_USUARIO" table="SE_ENCUENTRA_USUARIO" schema="" catalog="cumulo_demo" columns="ID_ESTADO"/>
+    </table>
+    <table name="ESTA_COMPUESTA" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="RUT_EMPRESA" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="RUT_EMPRESA,RUT_USUARIO"/>
+      <foreign-key name="FK_ESTA_COMPUESTA" columns="RUT_EMPRESA" ref-table="EMPRESA" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_EMPRESA" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_ESTA_COMPUESTA2" columns="RUT_USUARIO" ref-table="USUARIO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_USUARIO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_ESTA_COMPUESTA2" unique="false" columns="RUT_USUARIO"/>
+    </table>
+    <table name="GRUPO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_GRUPO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="RUT_EMPRESA" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NOMBRE_GRUPO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DESCRIPCION_GRUPO" sqlType="VARCHAR" precision="512" scale="0" nullable="false" jdbcType="12"/>
+      <column name="FECHA_CREACION_GRUPO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="ACTIVO_GRUPO" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="FECHA_INACTIVO_GRUPO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="CARACTER_LEGAL_GRUPO" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="ROL_PERSONALIDAD_JURIDICA_GRUPO" sqlType="VARCHAR" precision="10" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_GRUPO"/>
+      <foreign-key name="FK_COMPONE" columns="RUT_EMPRESA" ref-table="EMPRESA" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_EMPRESA" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_CREAN" table="CREAN" schema="" catalog="cumulo_demo" columns="ID_GRUPO"/>
+      <exported-key name="FK_PRESENTA" table="OFERTA" schema="" catalog="cumulo_demo" columns="ID_GRUPO"/>
+      <exported-key name="FK_SE_ENCUENTRA_GRUPO2" table="SE_ENCUENTRA_GRUPO" schema="" catalog="cumulo_demo" columns="ID_GRUPO"/>
+      <index name="FK_COMPONE" unique="false" columns="RUT_EMPRESA"/>
+    </table>
+    <table name="LICITACION" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_LICITACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ES_PRIVADA_LICITACION" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="FECHA_INICIO_LICITACION" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="FECHA_TERMINO_LICITACION" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="MINIMO_OFERTAS_LICITACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MAXIMO_OFERTAS_LICITACION" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="COSTO_MINIMO_LICITACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="COSTO_MAXIMO_LICITACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ES_DESIERTA_LICITACION" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="FECHA_DESIERTA_LICITACION" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="ID_LICITACION"/>
+      <foreign-key name="FK_DA_ORIGEN" columns="ID_PROYECTO" ref-table="PROYECTO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_PROYECTO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_SE_PRESENTAN" table="OFERTA" schema="" catalog="cumulo_demo" columns="ID_LICITACION"/>
+      <index name="FK_DA_ORIGEN" unique="false" columns="ID_PROYECTO"/>
+    </table>
+    <table name="OFERTA" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_OFERTA" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_LICITACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_GRUPO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FECHA_OFERTA" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="MONTO_OFERTA" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ES_APROBADA_OFERTA" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="FECHA_APROBADA_OFERTA" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="ID_OFERTA"/>
+      <foreign-key name="FK_APRUEBA" columns="RUT_USUARIO" ref-table="USUARIO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_USUARIO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_PRESENTA" columns="ID_GRUPO" ref-table="GRUPO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_GRUPO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_SE_PRESENTAN" columns="ID_LICITACION" ref-table="LICITACION" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_LICITACION" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK_SE_ENCUENTRA_OFERTA2" table="SE_ENCUENTRA_OFERTA" schema="" catalog="cumulo_demo" columns="ID_OFERTA"/>
+      <index name="FK_APRUEBA" unique="false" columns="RUT_USUARIO"/>
+      <index name="FK_PRESENTA" unique="false" columns="ID_GRUPO"/>
+      <index name="FK_SE_PRESENTAN" unique="false" columns="ID_LICITACION"/>
+    </table>
+    <table name="PROYECTO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="NOMBRE_PROYECTO" sqlType="VARCHAR" precision="512" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ESTA_ACTIVO_PROYECTO" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="FECHA_DESACTIVA_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="FECHA_CREACION_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="FECHA_INICIO_PROVABLE_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="FECHA_INICIO_REAL_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="FECHA_TERMINO_PROVABLE_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="FECHA_TERMINO_REAL_PROYECTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="TIR_PROYECTO" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="TASA_EXIGIDA_PESIMISTA" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="TASA_EXIGIDA_MODERADA" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="TASA_EXIGIDA_OPTIMISTA" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="VAN_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRESUPUESTO_INICICIAL_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PRESUPUESTO_LICITADO_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="PRESUPUESTO_LICITADO_APROBADO" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="MINIMO_SOCIOS_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="MAXIMO_SOCIOS_PROYECTO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CAPITAL_MINIMO_PARTICIPACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="CAPITAL_MAXIMO_PARTICIPACION" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="PORCENTAJE_MINIMO_PARTICIPACION" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="PORCENTAJE_MAXIMO_PARTICIPACION" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="ID_PROYECTO"/>
+      <exported-key name="FK_CREAN2" table="CREAN" schema="" catalog="cumulo_demo" columns="ID_PROYECTO"/>
+      <exported-key name="FK_DA_ORIGEN" table="LICITACION" schema="" catalog="cumulo_demo" columns="ID_PROYECTO"/>
+    </table>
+    <table name="SE_ENCUENTRA_EMPRESA" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="RUT_EMPRESA" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ID_ESTADO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="RUT_EMPRESA,ID_ESTADO"/>
+      <foreign-key name="FK_SE_ENCUENTRA_EMPRESA" columns="RUT_EMPRESA" ref-table="EMPRESA" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_EMPRESA" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_SE_ENCUENTRA_EMPRESA2" columns="ID_ESTADO" ref-table="ESTADO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_ESTADO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_SE_ENCUENTRA_EMPRESA2" unique="false" columns="ID_ESTADO"/>
+    </table>
+    <table name="SE_ENCUENTRA_GRUPO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_ESTADO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_GRUPO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_ESTADO,ID_GRUPO"/>
+      <foreign-key name="FK_SE_ENCUENTRA_GRUPO" columns="ID_ESTADO" ref-table="ESTADO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_ESTADO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_SE_ENCUENTRA_GRUPO2" columns="ID_GRUPO" ref-table="GRUPO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_GRUPO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_SE_ENCUENTRA_GRUPO2" unique="false" columns="ID_GRUPO"/>
+    </table>
+    <table name="SE_ENCUENTRA_OFERTA" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_ESTADO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="ID_OFERTA" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="ID_ESTADO,ID_OFERTA"/>
+      <foreign-key name="FK_SE_ENCUENTRA_OFERTA" columns="ID_ESTADO" ref-table="ESTADO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_ESTADO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_SE_ENCUENTRA_OFERTA2" columns="ID_OFERTA" ref-table="OFERTA" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_OFERTA" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_SE_ENCUENTRA_OFERTA2" unique="false" columns="ID_OFERTA"/>
+    </table>
+    <table name="SE_ENCUENTRA_USUARIO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="ID_ESTADO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="ID_ESTADO,RUT_USUARIO"/>
+      <foreign-key name="FK_SE_ENCUENTRA_USUARIO" columns="ID_ESTADO" ref-table="ESTADO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="ID_ESTADO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK_SE_ENCUENTRA_USUARIO2" columns="RUT_USUARIO" ref-table="USUARIO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_USUARIO" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_SE_ENCUENTRA_USUARIO2" unique="false" columns="RUT_USUARIO"/>
+    </table>
+    <table name="TIENE" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ID_PERMISO" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="RUT_USUARIO,ID_PERMISO"/>
+      <foreign-key name="FK_TIENE" columns="RUT_USUARIO" ref-table="USUARIO" ref-schema="" ref-catalog="cumulo_demo" ref-columns="RUT_USUARIO" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="USUARIO" schema="" catalog="cumulo_demo" type="TABLE">
+      <column name="RUT_USUARIO" sqlType="VARCHAR" precision="12" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NOMBRE_USUARIO" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MAIL_USUARIO" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="TELEFONO_USUARIO" sqlType="VARCHAR" precision="9" scale="0" nullable="true" jdbcType="12"/>
+      <column name="NOMBRE_NATURAL_USUARIO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="APELLIDO_USUARIO" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FECHA_NACIMIENTO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="DIRECCION_USUARIO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="COMUNA_USUARIO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="CIUDAD_USUARIO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PAIS_USUARIO" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ACTIVO_USUARIO" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="FECHA_INACTIVO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <column name="FECHA_INGRESO_SISTEMA_USUARIO" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="JzAwMDAtMDAtMDAgMDA6MDA6MDAn"/>
+      <primary-key name="PRIMARY" columns="RUT_USUARIO"/>
+      <exported-key name="FK_ES_RESPONSABLE" table="EMPRESA" schema="" catalog="cumulo_demo" columns="RUT_USUARIO"/>
+      <exported-key name="FK_ESTA_COMPUESTA2" table="ESTA_COMPUESTA" schema="" catalog="cumulo_demo" columns="RUT_USUARIO"/>
+      <exported-key name="FK_APRUEBA" table="OFERTA" schema="" catalog="cumulo_demo" columns="RUT_USUARIO"/>
+      <exported-key name="FK_SE_ENCUENTRA_USUARIO2" table="SE_ENCUENTRA_USUARIO" schema="" catalog="cumulo_demo" columns="RUT_USUARIO"/>
+      <exported-key name="FK_TIENE" table="TIENE" schema="" catalog="cumulo_demo" columns="RUT_USUARIO"/>
+    </table>
+  </data-source>
+</component>
