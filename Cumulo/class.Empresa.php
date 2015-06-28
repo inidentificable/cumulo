@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 
 /**
- * cumulo - Cluster/class.Empresa.php
+ * cumulo - Cumulo/class.Empresa.php
  *
  * $Id$
  *
@@ -13,7 +13,7 @@ error_reporting(E_ALL);
  * (last revised $Date: 2010-01-12 20:14:42 +0100 (Tue, 12 Jan 2010) $)
  *
  * @author Claudio Andrés Reyes Miranda, <claudio.reyes.miranda@gmail.com>
- * @package Cluster
+ * @package Cumulo
  */
 
 if (0 > version_compare(PHP_VERSION, '5')) {
@@ -25,7 +25,7 @@ if (0 > version_compare(PHP_VERSION, '5')) {
  *
  * @author Claudio Andrés Reyes Miranda, <claudio.reyes.miranda@gmail.com>
  */
-require_once('Cluster/class.Licitacion.php');
+require_once('Cumulo/class.Licitacion.php');
 
 /**
  * include ControlAcceso_Usuario
@@ -47,7 +47,7 @@ require_once('ControlAcceso/class.Usuario.php');
  *
  * @access public
  * @author Claudio Andrés Reyes Miranda, <claudio.reyes.miranda@gmail.com>
- * @package Cluster
+ * @package Cumulo
  */
 class Cluster_Empresa
     extends ControlAcceso_Usuario
